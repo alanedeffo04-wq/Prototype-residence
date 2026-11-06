@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Résidence meublée en centre-ville</title>
+<meta name="description" content="Appartements meublés en plein centre-ville. Assistance 24h/24 et sécurité.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#accueil">Logo</a>
+    <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+    <nav id="nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="#accueil">Accueil</a></li>
+        <li><a href="#catalogue">Catalogue</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="accueil">
+    <!-- Remplacez par votre vidéo : assets/residence.mp4 -->
+    <video autoplay muted loop playsinline poster="assets/residence.jpg" aria-hidden="true">
+      <source src="video.mp4" type="video/mp4">
+    </video>
+    <div class="in wrap">
+      <h1>Séjournez au cœur de la ville, comme chez vous</h1>
+      <p>Des appartements meublés et équipés, à deux pas de tout. Choisissez le vôtre et réservez en quelques minutes.</p>
+      <a class="btn" href="#catalogue">Voir les appartements</a>
+    </div>
+  </section>
+
+  <section class="assure" aria-label="Nos engagements">
+    <div class="wrap">
+      <ul>
+        <li><h3>Assistance 24h/24</h3><p>Une équipe joignable à toute heure, pendant tout votre séjour.</p></li>
+        <li><h3>Plein centre-ville</h3><p>Commerces, restaurants et transports à proximité immédiate.</p></li>
+        <li><h3>Sécurité</h3><p>Résidence sécurisée et accès contrôlé.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="pad" id="catalogue">
+    <div class="wrap">
+      <h2>Catalogue</h2><div class="rule"></div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section class="pad contact" id="contact">
+    <div class="wrap">
+      <h2>Contact</h2><div class="rule"></div>
+      <p>Besoin d’informations ? Posez-nous vos questions, nous vous répondons rapidement.</p>
+      <div class="acts">
+        <a class="btn wa" id="waContact" href="#" target="_blank" rel="noopener">Écrire sur WhatsApp</a>
+        <a class="btn ghost" id="mailContact" href="#">Envoyer un e-mail</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div><h3>Nom de la résidence</h3><p>Adresse, code postal, ville</p></div>
+      <div><h3>Contact</h3><p>+00 000 000 000<br>contact@residence.com</p></div>
+      <div><h3>Assistance</h3><p>Disponible 24h/24, 7j/7</p></div>
+    </div>
+    <small>© <span id="yr"></span> Nom de la résidence. Tous droits réservés.</small>
+  </div>
+</footer>
+
+<!-- Fiche appartement -->
+<dialog id="dlgDetail" aria-labelledby="dTitle">
+  <button class="close" data-close aria-label="Fermer">×</button>
+  <div class="detail">
+    <div class="gallery">
+      <div class="main"><img id="dMain" alt=""></div>
+      <div class="thumbs" id="dThumbs"></div>
+    </div>
+    <div class="info">
+      <h2 id="dTitle"></h2><div class="rule"></div>
+      <p id="dDesc"></p>
+      <ul id="dList"></ul>
+      <div class="price" id="dPrice"></div>
+      <button class="btn" id="dBook">Réserver</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- Réservation -->
+<dialog id="dlgBook" aria-labelledby="bTitle">
+  <button class="close" data-close aria-label="Fermer">×</button>
+  <form id="form" novalidate>
+    <h2 id="bTitle">Réserver</h2><div class="rule"></div>
+    <div class="sum" id="bSum"></div>
+    <div class="row">
+      <label>Nom<input type="text" name="nom" autocomplete="family-name" required></label>
+      <label>Prénom<input type="text" name="prenom" autocomplete="given-name" required></label>
+    </div>
+    <div class="row">
+      <label>Adresse e-mail<input type="email" name="email" autocomplete="email" required></label>
+      <label>Numéro de téléphone<input type="tel" name="tel" autocomplete="tel" required></label>
+    </div>
+    <div class="row">
+      <label>Date d’arrivée<input type="date" name="arrivee" required></label>
+      <label>Date de départ<input type="date" name="depart" required></label>
+    </div>
+    <fieldset>
+      <legend>Options</legend>
+      <label><input type="checkbox" name="options" value="Transfert depuis l’aéroport"> Transfert depuis l’aéroport</label>
+      <label><input type="checkbox" name="options" value="Ménage supplémentaire"> Ménage supplémentaire</label>
+      <label><input type="checkbox" name="options" value="Petit-déjeuner"> Petit-déjeuner</label>
+      <label><input type="checkbox" name="options" value="Lit bébé"> Lit bébé</label>
+      <label><input type="checkbox" name="options" value="Arrivée tardive"> Arrivée tardive</label>
+    </fieldset>
+    <label>Autre demande (facultatif)<textarea name="message" rows="3"></textarea></label>
+    <div class="err" id="err" role="alert"></div>
+    <button class="btn wa" type="submit" id="send">Envoyer</button>
+  </form>
+  <div class="ok" id="ok" hidden>
+    <h2>Demande envoyée</h2><div class="rule"></div>
+    <p>Merci ! Votre demande a bien été transmise. Nous vous recontactons très vite.</p>
+    <p style="margin-top:24px"><button class="btn ghost" data-close>Fermer</button></p>
+  </div>
+</dialog>
+
+<script src="config.js"></script>
+<script src="appartements.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

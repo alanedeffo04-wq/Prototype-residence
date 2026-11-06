@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Administration – Disponibilités</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="adm">
+  <h1>Administration</h1>
+  <div class="rule" style="margin-left:0"></div>
+
+  <!-- Connexion -->
+  <section class="box" id="login">
+    <form id="loginForm" novalidate>
+      <label>Adresse e-mail<input type="email" id="email" autocomplete="username" required></label>
+      <label>Mot de passe<input type="password" id="pwd" autocomplete="current-password" required style="width:100%;margin-top:6px;padding:12px;border:1px solid #cfc6b2;font:inherit"></label>
+      <div class="err" id="loginErr" role="alert"></div>
+      <button class="btn" type="submit">Se connecter</button>
+    </form>
+  </section>
+
+  <!-- Disponibilités -->
+  <section class="box" id="panel" hidden>
+    <div class="adm-top">
+      <h2 style="font-size:1.6rem;text-align:left">Disponibilité des appartements</h2>
+      <button class="btn ghost sm" id="logout" type="button">Déconnexion</button>
+    </div>
+    <div class="err" id="panelErr" role="alert"></div>
+    <div id="lots" aria-live="polite"></div>
+  </section>
+</main>
+<script src="config.js"></script>
+<script src="appartements.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>
