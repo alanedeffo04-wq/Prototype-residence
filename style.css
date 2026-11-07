@@ -131,3 +131,23 @@ fieldset label{display:flex;gap:10px;align-items:center;margin:8px 0}
 .etat{font-size:.9rem;color:#1f7a45}
 .etat.off{color:#a3281f}
 .btn.sm{padding:10px 20px;font-size:.88rem}
+
+/* Icônes de réassurance */
+.assure li{text-align:center}
+.ico{display:block;width:46px;height:46px;margin:0 auto 12px;fill:none;stroke:var(--gold);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* Carte */
+.map{margin-top:40px;border:1px solid var(--line);aspect-ratio:16/7}
+.map iframe{display:block;width:100%;height:100%;border:0}
+@media (max-width:820px){.map{aspect-ratio:4/3}}
+
+/* Admin : réservations */
+.adm{width:min(760px,92%)}
+.sect{margin-top:40px}
+.resa{border:1px solid var(--line);padding:16px 18px;margin-bottom:14px;font-size:.95rem}
+.resa-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:6px}
+.resa-top strong{font-family:var(--serif);font-size:1.3rem;font-weight:500}
+.resa p{color:var(--muted);margin:2px 0}
+.tag{font-size:.8rem;padding:2px 10px;border:1px solid var(--line);color:var(--muted)}
+.tag.new{border-color:var(--gold);color:var(--gold-dark)}
+.resa .btn{margin-top:12px}

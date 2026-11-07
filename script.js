@@ -1,4 +1,5 @@
 const $ = s => document.querySelector(s);
+const src = p => encodeURI(p); // gère les espaces dans les noms de fichiers
 let current = null;
 
 /* Disponibilité (gérée depuis admin.html) */
@@ -24,7 +25,7 @@ function renderGrid(){
     const b = document.createElement("button");
     b.className = "card" + (ok ? "" : " off"); b.type = "button";
     b.setAttribute("aria-label", "Voir " + a.nom + (ok ? "" : " (indisponible)"));
-    b.innerHTML = `<div class="ph"><img src="${a.photos[0]}" alt="${a.nom}" loading="lazy" onerror="this.remove()">${ok ? "" : '<span class="badge">Indisponible</span>'}</div>
+    b.innerHTML = `<div class="ph"><img src="${src(a.cover || a.photos[0])}" alt="${a.nom}" loading="lazy" onerror="this.remove()">${ok ? "" : '<span class="badge">Indisponible</span>'}</div>
       <div class="meta"><h3>${a.nom}</h3><p>${a.resume}</p><div class="price">${a.prix}</div></div>`;
     b.onclick = () => openDetail(a);
     grid.appendChild(b);
@@ -35,7 +36,7 @@ chargerDispos();
 
 /* Fiche */
 function showPhoto(i){
-  $("#dMain").src = current.photos[i];
+  $("#dMain").src = src(current.photos[i]);
   $("#dMain").alt = current.nom + " – photo " + (i+1);
   [...$("#dThumbs").children].forEach((t,k)=>t.setAttribute("aria-current", k===i));
 }
@@ -51,7 +52,7 @@ function openDetail(a){
   a.photos.forEach((p,i)=>{
     const t = document.createElement("button");
     t.type = "button"; t.setAttribute("aria-label","Photo "+(i+1));
-    t.innerHTML = `<img src="${p}" alt="" onerror="this.remove()">`;
+    t.innerHTML = `<img src="${src(p)}" alt="" onerror="this.remove()">`;
     t.onclick = () => showPhoto(i);
     th.appendChild(t);
   });
