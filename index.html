@@ -15,14 +15,20 @@
 <header>
   <div class="wrap bar">
     <a class="logo" href="#accueil">Logo</a>
-    <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
-    <nav id="nav" aria-label="Navigation principale">
-      <ul>
-        <li><a href="#accueil">Accueil</a></li>
-        <li><a href="#catalogue">Catalogue</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+    <div class="right">
+      <nav id="nav" aria-label="Navigation principale">
+        <ul>
+          <li><a href="#accueil" data-i18n="nav_home">Accueil</a></li>
+          <li><a href="#catalogue" data-i18n="nav_catalog">Catalogue</a></li>
+          <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="langs" role="group" aria-label="Langue / Language">
+        <button type="button" data-lang="fr" aria-pressed="true">FR</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <button class="burger" id="burger" data-i18n-aria="menu" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+    </div>
   </div>
 </header>
 
@@ -33,66 +39,67 @@
       <source src="video.mp4" type="video/mp4">
     </video>
     <div class="in wrap">
-      <h1>Séjournez au cœur de la ville, comme chez vous</h1>
-      <p>Des appartements meublés et équipés, à deux pas de tout. Choisissez le vôtre et réservez en quelques minutes.</p>
-      <a class="btn" href="#catalogue">Voir les appartements</a>
+      <h1 data-i18n="hero_title">Séjournez au cœur de la ville, comme chez vous</h1>
+      <p data-i18n="hero_text">Des appartements meublés et équipés, à deux pas de tout. Choisissez le vôtre et réservez en quelques minutes.</p>
+      <a class="btn" href="#catalogue" data-i18n="hero_btn">Voir les appartements</a>
     </div>
   </section>
 
   <section class="assure" aria-label="Nos engagements">
-  <div class="wrap">
-    <ul>
-      <li>
-        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2.5" y="14" width="4" height="6" rx="1.5"/><rect x="17.5" y="14" width="4" height="6" rx="1.5"/><path d="M19.5 20c0 1.5-2 2-5 2"/></svg>
-        <h3>Assistance 24h/24</h3>
-      </li>
-      <li>
-        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
-        <h3>Plein centre-ville</h3>
-      </li>
-      <li>
-        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
-        <h3>Sécurité</h3>
-      </li>
-    </ul>
-  </div>
-</section>
+    <div class="wrap">
+      <ul>
+        <li>
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2.5" y="14" width="4" height="6" rx="1.5"/><rect x="17.5" y="14" width="4" height="6" rx="1.5"/><path d="M19.5 20c0 1.5-2 2-5 2"/></svg>
+          <h3 data-i18n="a1">Assistance 24h/24</h3>
+        </li>
+        <li>
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          <h3 data-i18n="a2">Plein centre-ville</h3>
+        </li>
+        <li>
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
+          <h3 data-i18n="a3">Sécurité</h3>
+        </li>
+      </ul>
+    </div>
+  </section>
+
   <section class="pad" id="catalogue">
     <div class="wrap">
-      <h2>Catalogue</h2><div class="rule"></div>
+      <h2 data-i18n="cat_title">Catalogue</h2><div class="rule"></div>
       <div class="grid" id="grid"></div>
     </div>
   </section>
 
   <section class="pad contact" id="contact">
-  <div class="wrap">
-    <h2>Contact</h2><div class="rule"></div>
-    <p>Besoin d’informations ? Posez-nous vos questions, nous vous répondons rapidement.</p>
-    <div class="acts">
-      <a class="btn wa" id="waContact" href="#" target="_blank" rel="noopener">Écrire sur WhatsApp</a>
-      <a class="btn ghost" id="mailContact" href="#">Envoyer un e-mail</a>
+    <div class="wrap">
+      <h2 data-i18n="contact_title">Contact</h2><div class="rule"></div>
+      <p data-i18n="contact_text">Besoin d’informations ? Posez-nous vos questions, nous vous répondons rapidement.</p>
+      <div class="acts">
+        <a class="btn wa" id="waContact" href="#" target="_blank" rel="noopener" data-i18n="wa_btn">Écrire sur WhatsApp</a>
+        <a class="btn ghost" id="mailContact" href="#" data-i18n="mail_btn">Envoyer un e-mail</a>
+      </div>
+      <div class="map">
+        <iframe title="Douala, Cameroun" src="https://www.google.com/maps?q=Douala,+Cameroun&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
     </div>
-    <div class="map">
-      <iframe title="Localisation : Douala, Cameroun" src="https://www.google.com/maps?q=Douala,+Cameroun&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-    </div>
-  </div>
-</section>
+  </section>
 </main>
 
 <footer>
   <div class="wrap">
     <div class="cols">
-      <div><h3>Nom de la résidence</h3><p>Adresse, code postal, ville</p></div>
-      <div><h3>Contact</h3><p>+00 000 000 000<br>contact@residence.com</p></div>
-      <div><h3>Assistance</h3><p>Disponible 24h/24, 7j/7</p></div>
+      <div><h3>Nom de la résidence</h3><p>Douala, Cameroun</p></div>
+      <div><h3 data-i18n="f_contact">Contact</h3><p>+00 000 000 000<br>contact@residence.com</p></div>
+      <div><h3 data-i18n="f_assist">Assistance</h3><p data-i18n="f_assist_txt">Disponible 24h/24, 7j/7</p></div>
     </div>
-    <small>© <span id="yr"></span> Nom de la résidence. Tous droits réservés.</small>
+    <small>© <span id="yr"></span> Nom de la résidence. <span data-i18n="rights">Tous droits réservés.</span></small>
   </div>
 </footer>
 
 <!-- Fiche appartement -->
 <dialog id="dlgDetail" aria-labelledby="dTitle">
-  <button class="close" data-close aria-label="Fermer">×</button>
+  <button class="close" data-close data-i18n-aria="close" aria-label="Fermer">×</button>
   <div class="detail">
     <div class="gallery">
       <div class="main"><img id="dMain" alt=""></div>
@@ -110,38 +117,38 @@
 
 <!-- Réservation -->
 <dialog id="dlgBook" aria-labelledby="bTitle">
-  <button class="close" data-close aria-label="Fermer">×</button>
+  <button class="close" data-close data-i18n-aria="close" aria-label="Fermer">×</button>
   <form id="form" novalidate>
-    <h2 id="bTitle">Réserver</h2><div class="rule"></div>
+    <h2 id="bTitle" data-i18n="book_title">Réserver</h2><div class="rule"></div>
     <div class="sum" id="bSum"></div>
     <div class="row">
-      <label>Nom<input type="text" name="nom" autocomplete="family-name" required></label>
-      <label>Prénom<input type="text" name="prenom" autocomplete="given-name" required></label>
+      <label><span data-i18n="f_last">Nom</span><input type="text" name="nom" autocomplete="family-name" required></label>
+      <label><span data-i18n="f_first">Prénom</span><input type="text" name="prenom" autocomplete="given-name" required></label>
     </div>
     <div class="row">
-      <label>Adresse e-mail<input type="email" name="email" autocomplete="email" required></label>
-      <label>Numéro de téléphone<input type="tel" name="tel" autocomplete="tel" required></label>
+      <label><span data-i18n="f_email">Adresse e-mail</span><input type="email" name="email" autocomplete="email" required></label>
+      <label><span data-i18n="f_phone">Numéro de téléphone</span><input type="tel" name="tel" autocomplete="tel" required></label>
     </div>
     <div class="row">
-      <label>Date d’arrivée<input type="date" name="arrivee" required></label>
-      <label>Date de départ<input type="date" name="depart" required></label>
+      <label><span data-i18n="f_in">Date d’arrivée</span><input type="date" name="arrivee" required></label>
+      <label><span data-i18n="f_out">Date de départ</span><input type="date" name="depart" required></label>
     </div>
     <fieldset>
-      <legend>Options</legend>
-      <label><input type="checkbox" name="options" value="Transfert depuis l’aéroport"> Transfert depuis l’aéroport</label>
-      <label><input type="checkbox" name="options" value="Ménage supplémentaire"> Ménage supplémentaire</label>
-      <label><input type="checkbox" name="options" value="Petit-déjeuner"> Petit-déjeuner</label>
-      <label><input type="checkbox" name="options" value="Lit bébé"> Lit bébé</label>
-      <label><input type="checkbox" name="options" value="Arrivée tardive"> Arrivée tardive</label>
+      <legend data-i18n="f_options">Options</legend>
+      <label><input type="checkbox" name="options" value="Transfert depuis l’aéroport"> <span data-i18n="o1">Transfert depuis l’aéroport</span></label>
+      <label><input type="checkbox" name="options" value="Ménage supplémentaire"> <span data-i18n="o2">Ménage supplémentaire</span></label>
+      <label><input type="checkbox" name="options" value="Petit-déjeuner"> <span data-i18n="o3">Petit-déjeuner</span></label>
+      <label><input type="checkbox" name="options" value="Lit bébé"> <span data-i18n="o4">Lit bébé</span></label>
+      <label><input type="checkbox" name="options" value="Arrivée tardive"> <span data-i18n="o5">Arrivée tardive</span></label>
     </fieldset>
-    <label>Autre demande (facultatif)<textarea name="message" rows="3"></textarea></label>
+    <label><span data-i18n="f_other">Autre demande (facultatif)</span><textarea name="message" rows="3"></textarea></label>
     <div class="err" id="err" role="alert"></div>
-    <button class="btn wa" type="submit" id="send">Envoyer</button>
+    <button class="btn wa" type="submit" id="send" data-i18n="send">Envoyer</button>
   </form>
   <div class="ok" id="ok" hidden>
-    <h2>Demande envoyée</h2><div class="rule"></div>
-    <p>Merci ! Votre demande a bien été transmise. Nous vous recontactons très vite.</p>
-    <p style="margin-top:24px"><button class="btn ghost" data-close>Fermer</button></p>
+    <h2 data-i18n="sent_title">Demande envoyée</h2><div class="rule"></div>
+    <p data-i18n="sent_text">Merci ! Votre demande a bien été transmise. Nous vous recontactons très vite.</p>
+    <p style="margin-top:24px"><button class="btn ghost" data-close data-i18n="close_btn">Fermer</button></p>
   </div>
 </dialog>
 
