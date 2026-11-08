@@ -41,6 +41,6 @@ const APPARTS = [
    desc_en:"Our most upscale suite: refined finishes, a large bed and a lounge area.",
    infos:["55 m², dernier étage","1 lit king size","Salle de bain avec baignoire","Wi-Fi haut débit","Climatisation"],
    infos_en:["55 m², top floor","1 king-size bed","Bathroom with bathtub","High-speed Wi-Fi","Air conditioning"],
-   cover:"images/suite prestige p.png",
-   photos:["images/suite prestige p1.png","images/suite prestige p2.png","images/suite prestige p3.png"]}
+   cover:"suite p.png",
+   photos:["suite p.png","suite p2.png","suite p3.png"]}
 ];
