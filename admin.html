@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Administration – Disponibilités</title>
+<title>Administration</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -23,7 +23,7 @@
     </form>
   </section>
 
-  <!-- Disponibilités -->
+  <!-- Espace admin -->
   <section class="box" id="panel" hidden>
     <div class="adm-top">
       <h2 style="font-size:1.6rem;text-align:left">Disponibilité des appartements</h2>
@@ -31,6 +31,12 @@
     </div>
     <div class="err" id="panelErr" role="alert"></div>
     <div id="lots" aria-live="polite"></div>
+
+    <div class="sect">
+      <h2 style="font-size:1.6rem;text-align:left;margin-bottom:12px">Réservations reçues</h2>
+      <div class="err" id="resaErr" role="alert"></div>
+      <div id="resas" aria-live="polite"></div>
+    </div>
   </section>
 </main>
 <script src="config.js"></script>
