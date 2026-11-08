@@ -9,7 +9,7 @@ const APPARTS = [
    infos:["25 m², 1er étage","1 lit double","Cuisine équipée","Wi-Fi haut débit","Climatisation"],
    infos_en:["25 m², 1st floor","1 double bed","Equipped kitchen","High-speed Wi-Fi","Air conditioning"],
    cover:"images/studio p.png",
-   photos:["images/studio p1.png","images/studio p2.png","images/studio p3.png"]},
+   photos:["images/studio p.png","images/studio p2.png","images/studio p3.png"]},
 
   {id:"t2",
    nom:"Appartement 2 pièces", nom_en:"2-Room Apartment",
@@ -20,7 +20,7 @@ const APPARTS = [
    infos:["45 m², avec balcon","1 chambre, 1 canapé-lit","Cuisine équipée","Wi-Fi haut débit","Climatisation"],
    infos_en:["45 m², with balcony","1 bedroom, 1 sofa bed","Equipped kitchen","High-speed Wi-Fi","Air conditioning"],
    cover:"images/appartement p.png",
-   photos:["images/appartement p1.png","images/appartement p2.png","images/appartement p3.png"]},
+   photos:["images/appartement p.png","images/appartement p2.png","images/appartement p3.png"]},
 
   {id:"t3",
    nom:"Appartement 3 pièces", nom_en:"3-Room Apartment",
@@ -30,8 +30,8 @@ const APPARTS = [
    desc_en:"Spacious and refined, designed for families and long stays.",
    infos:["70 m², vue dégagée","2 chambres, 2 salles d’eau","Cuisine équipée","Wi-Fi haut débit","Climatisation"],
    infos_en:["70 m², open view","2 bedrooms, 2 bathrooms","Equipped kitchen","High-speed Wi-Fi","Air conditioning"],
-   cover:"images/appartement 2 p.png",
-   photos:["images/appartement 2 p1.png","images/appartement 2 p2.png","images/appartement 2 p3.png"]},
+   cover:"images/appartement p.png",
+   photos:["images/appartement p.png","images/appartement p2.png","images/appartement p3.png"]},
 
   {id:"suite",
    nom:"Suite Prestige", nom_en:"Prestige Suite",
