@@ -21,6 +21,7 @@ const I18N = {
     f_other:"Autre demande (facultatif)", send:"Envoyer",
     sent_title:"Demande envoyée", sent_text:"Merci ! Votre demande a bien été transmise. Nous vous recontactons très vite.",
     close_btn:"Fermer",
+    wa_fallback:"Ouvrir WhatsApp",
     reserve:"Réserver", unavailable:"Indisponible pour le moment", badge:"Indisponible", view:"Voir", unavail_paren:" (indisponible)", photo:"photo",
     err_required:"Veuillez remplir tous les champs obligatoires.",
     err_email:"L’adresse e-mail n’est pas valide.",
@@ -46,6 +47,7 @@ const I18N = {
     f_other:"Other request (optional)", send:"Send",
     sent_title:"Request sent", sent_text:"Thank you! Your request has been sent. We will contact you very soon.",
     close_btn:"Close",
+    wa_fallback:"Open WhatsApp",
     reserve:"Book", unavailable:"Currently unavailable", badge:"Unavailable", view:"View", unavail_paren:" (unavailable)", photo:"photo",
     err_required:"Please fill in all required fields.",
     err_email:"The e-mail address is not valid.",
@@ -72,7 +74,7 @@ async function chargerDispos(){
   if(!CONFIG.supabaseUrl || !CONFIG.supabaseKey) return;
   try{
     const r = await fetch(CONFIG.supabaseUrl + "/rest/v1/appartements_statut?select=id,disponible",
-      {headers:{"apikey":CONFIG.supabaseKey,"Authorization":"Bearer "+CONFIG.supabaseKey}});
+      {headers:{"apikey":CONFIG.supabaseKey}});
     if(!r.ok) return;
     (await r.json()).forEach(x => indispos[x.id] = x.disponible);
     renderGrid();
@@ -127,6 +129,7 @@ $("#dBook").onclick = () => {
   $("#dlgDetail").close();
   $("#bSum").textContent = L(current,"nom") + " · " + L(current,"prix");
   $("#form").hidden = false; $("#ok").hidden = true; $("#err").textContent = "";
+  const old = $("#waFallback"); if(old) old.remove();
   const today = new Date().toISOString().slice(0,10);
   $("#form").arrivee.min = today; $("#form").depart.min = today;
   $("#dlgBook").showModal();
@@ -142,7 +145,7 @@ $("#form").addEventListener("submit", async e=>{
     email: f.email.value.trim(), tel: f.tel.value.trim(),
     arrivee: f.arrivee.value, depart: f.depart.value,
     options: checked.map(o=>o.value),                // enregistré en français dans la base
-    message: f.message.value.trim(), date_envoi: new Date().toISOString()
+    message: f.message.value.trim()
   };
   if(!d.nom||!d.prenom||!d.email||!d.tel||!d.arrivee||!d.depart){err.textContent=t("err_required");return;}
   if(!/^\S+@\S+\.\S+$/.test(d.email)){err.textContent=t("err_email");return;}
@@ -153,28 +156,34 @@ $("#form").addEventListener("submit", async e=>{
   const optsTxt = checked.map(o=>o.parentElement.textContent.trim()).join(", ") || t("wa_none");
   const txt = `${t("wa_intro")}\n• ${t("wa_apt")} : ${L(current,"nom")}\n• ${t("wa_name")} : ${d.prenom} ${d.nom}\n• ${t("wa_email")} : ${d.email}\n• ${t("wa_phone")} : ${d.tel}\n• ${t("wa_in")} : ${d.arrivee}\n• ${t("wa_out")} : ${d.depart}\n• ${t("wa_opts")} : ${optsTxt}\n• ${t("wa_msg")} : ${d.message||"–"}`;
   const wa = "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(txt);
-  const win = window.open("", "_blank"); // ouvre tout de suite (évite le blocage des popups)
+
+  // 1) On ouvre WhatsApp tout de suite (pendant le clic, donc non bloqué)
+  window.open(wa, "_blank");
   $("#send").disabled = true;
 
-  // Enregistrement en base de données
+  // 2) On enregistre dans la base de données
   try{
     if(CONFIG.supabaseUrl && CONFIG.supabaseKey){
-      const {date_envoi, ...row} = d;
       const r = await fetch(CONFIG.supabaseUrl + "/rest/v1/reservations", {
         method:"POST",
-        headers:{"Content-Type":"application/json","apikey":CONFIG.supabaseKey,"Authorization":"Bearer "+CONFIG.supabaseKey,"Prefer":"return=minimal"},
-        body:JSON.stringify(row)
+        headers:{"Content-Type":"application/json","apikey":CONFIG.supabaseKey,"Prefer":"return=minimal"},
+        body:JSON.stringify(d)
       });
-      if(!r.ok) throw new Error(await r.text());
+      if(!r.ok) throw new Error(r.status + " " + await r.text());
     }else{
       const all = JSON.parse(localStorage.getItem("reservations")||"[]"); all.push(d);
       localStorage.setItem("reservations", JSON.stringify(all)); // test uniquement
     }
   }catch(x){ console.error("Enregistrement impossible", x); }
 
-  if(win) win.location = wa; else location.href = wa;
+  // 3) Écran de confirmation + bouton de secours WhatsApp
   $("#send").disabled = false;
   f.reset(); f.hidden = true; $("#ok").hidden = false;
+  const old = $("#waFallback"); if(old) old.remove();
+  const p = document.createElement("p");
+  p.id = "waFallback"; p.style.marginTop = "18px";
+  p.innerHTML = `<a class="btn wa" href="${wa}" target="_blank" rel="noopener">${t("wa_fallback")}</a>`;
+  $("#ok").insertBefore(p, $("#ok").lastElementChild);
 });
 
 /* ========= APPLIQUER LA LANGUE ========= */
