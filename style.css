@@ -24,7 +24,7 @@ h2{font-size:clamp(2.2rem,4.6vw,3.2rem);text-align:center;letter-spacing:.02em}
 
 /* En-tête */
 header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line)}
-.bar{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:104px;padding:10px 0}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:132px;padding:10px 0}
 .logo{display:flex;align-items:center;flex:0 0 auto;min-width:0;text-decoration:none;border:0;padding:0}
 .logo img{display:block;height:84px;width:auto;max-width:none;object-fit:contain}
 .right{display:flex;align-items:center;gap:34px}
@@ -178,8 +178,8 @@ fieldset label{display:flex;gap:12px;align-items:center;margin:10px 0;font-size:
 
 /* Tablette et mobile */
 @media (max-width:820px){
-  .bar{min-height:88px}
-  .logo img{height:62px;max-width:58vw}
+  .bar{min-height:104px}
+  .logo img{height:80px;max-width:60vw}
   .right{gap:8px}
   .burger{display:block}
   nav{position:absolute;top:100%;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);display:none}
